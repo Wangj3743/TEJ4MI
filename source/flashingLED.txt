@@ -1,0 +1,10 @@
+﻿TRISB=%00000000
+
+Main:
+portb=%00000001
+pause 250
+portb=%00000000
+
+great cow help file
+
+portb = 0b00000000
