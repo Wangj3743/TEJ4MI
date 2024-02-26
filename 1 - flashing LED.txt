@@ -1,37 +1,6 @@
-#Chip 16f18875, 40
+#CHIP 16F887
 
-#Define LED PortB.0
-
-Dir LED Out		// variable
-
-Do
-	PulseOut LED, 100 ms	# led
+Do Forever
+	PulseOut PortB.0, 100 ms
 	Wait 500 ms
 Loop
-
-
-
-####################
-
-
-
-#Chip 16f18875, 40
-
-#Define LED PortB.0
-
-Dir LED Out		// variable
-
-Do
-	LED = 1
-	Wait 500 ms
-	LED = 0
-Loop
-
-
-
-###################
-
-
-
-// GC CODE
-// melabs Programmer
