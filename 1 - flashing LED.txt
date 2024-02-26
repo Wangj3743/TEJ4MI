@@ -1,10 +1,37 @@
-﻿TRISB=%00000000
+#Chip 16f18875, 40
 
-Main:
-portb=%00000001
-pause 250
-portb=%00000000
+#Define LED PortB.0
 
-great cow help file
+Dir LED Out		// variable
 
-portb = 0b00000000
+Do
+	PulseOut LED, 100 ms	# led
+	Wait 500 ms
+Loop
+
+
+
+####################
+
+
+
+#Chip 16f18875, 40
+
+#Define LED PortB.0
+
+Dir LED Out		// variable
+
+Do
+	LED = 1
+	Wait 500 ms
+	LED = 0
+Loop
+
+
+
+###################
+
+
+
+// GC CODE
+// melabs Programmer
