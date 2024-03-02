@@ -1,0 +1,28 @@
+#CHIP 16F18875
+
+#DEFINE LME PortC.0
+#DEFINE LMB PortC.1
+Dir LME OUT
+Dir LMB OUT
+
+#DEFINE RME PortC.2
+#DEFINE RMB PortC.3
+Dir RME OUT
+Dir RMB OUT
+
+start:
+	set LME OFF
+	set LMB ON
+	set RME OFF
+	set RMB ON
+	
+	Wait 1000 ms
+	
+	set LME ON
+	set LMB OFF
+	set RME ON
+	set RMB OFF
+	
+	Wait 1000 ms
+GOTO start
+end
