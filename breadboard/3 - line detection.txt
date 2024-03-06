@@ -23,6 +23,7 @@ start:
 		motors(0)
 	Else 
 		motors(1)
+	End If
 GOTO start
 end
 
