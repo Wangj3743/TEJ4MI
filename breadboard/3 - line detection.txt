@@ -2,7 +2,7 @@
 
 
 ' line detection
-#define PHOTO PortA.7
+#define PHOTO PortA.0
 Dir PHOTO IN
 
 ' motors
