@@ -38,4 +38,5 @@ sub motors(direction)	' 1 = fwd, 0 = bwd
 		set LMB OFF
 		set RME ON
 		set RMB OFF
+	End If
 end sub
