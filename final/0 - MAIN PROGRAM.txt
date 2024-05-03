@@ -1,0 +1,121 @@
+#CHIP 16F18875
+
+
+
+' ===== VARIABLES =====
+' sensors
+#define PHOTO PortA.0
+dir PHOTO in
+#define IRSENS PortA.1
+dir IRSENS in
+#define WallFront PORTA.2
+dir WallFront in
+#define WallLeft PORTA.3
+dir WallLeft in
+
+
+' motors + motor fan
+#define LME PortC.0
+dir LME out
+#define LMB PortC.1
+dir LMB out
+#define RME PortC.2
+dir RME out
+#define RMB PortC.3
+dir RMB out
+#define FAN PortA.4
+dir FAN out
+
+
+' LCD
+#define LCD_LINES 2
+#define LCD_IO 4
+
+#define LCD_RW PORTD.1
+#define LCD_RS PORTD.0
+
+#define LCD_ENABLE PORTD.2
+
+#define LCD_DB4 PORTD.4
+#define LCD_DB5 PORTD.5
+#define LCD_DB6 PORTD.6
+#define LCD_DB7 PORTD.7
+
+dir LCD_DB7 out
+dir LCD_DB6 out
+dir LCD_DB5 out
+dir LCD_DB4 out
+dir LCD_RW out
+dir LCD_RS out
+dir LCD_ENABLE out
+
+dim WallFrontVoltage as Byte
+dim WallLeftVoltage as Byte
+
+dim DigitalWallFront as Byte
+dim DigitalWallLeft as Byte
+
+
+
+' ===== SUBROUTINES =====
+sub motors(direction) ' 1 = fwd, 0 = bwd
+  If direction = 1 then
+    set LME OFF
+    set LMB ON
+    set RME OFF
+    set RMB ON
+  Else
+    set LME ON
+    set LMB OFF
+    set RME ON
+    set RMB OFF
+  End If
+end sub
+
+
+sub fanmotor(direction)	' 1 = on, 0 = off
+	If direction = 1 then
+		set FAN ON
+	Else
+		set FAN OFF
+	End If
+end sub
+
+
+
+' ===== MAIN PROGRAM =====
+start:
+  ' line detection
+  If PHOTO ON then
+    motors(0)
+  Else
+    motors(1)
+  End If
+
+
+  ' ir detection
+  If IRSENS ON then
+		fanmotor(0)
+	Else
+		fanmotor(1)
+	End If
+
+
+  ' wall detection
+  CLS
+  WallFrontVoltage = READAD(AN1)
+  WallLeftVoltage = READAD(AN2)
+
+  DigitalWallFront = ((6787/(WallFrontVoltage-3))-4)/5
+  DigitalWallLeft = ((6787/(WallLeftVoltage-3))-4)/5
+
+  Locate 0,0
+  Print "LEFT: "
+  Print DigitalWallLeft
+  Locate 1,0
+  Print "FRONT: "
+  Print DigitalWallFront
+  ' wait 500 ms
+GOTO start
+end
+

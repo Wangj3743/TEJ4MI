@@ -1,0 +1,31 @@
+#chip 16F18875
+
+#define LCD_LINES 2
+#define LCD_IO 4
+
+#define LCD_RW PORTD.1
+#define LCD_RS PORTD.0
+
+#define LCD_ENABLE PORTD.2
+
+#define LCD_DB4 PORTD.4
+#define LCD_DB5 PORTD.5
+#define LCD_DB6 PORTD.6
+#define LCD_DB7 PORTD.7
+
+Dir LCD_DB7 out
+Dir LCD_DB6 out
+Dir LCD_DB5 out
+Dir LCD_DB4 out
+Dir LCD_RW out
+Dir LCD_RS out
+Dir LCD_ENABLE out
+
+Do Forever
+  CLS
+  Locate 0,0
+  print ("TEST ONE")
+  Locate 1,1
+  print ("TEST TWO")
+  wait 1000 ms
+Loop

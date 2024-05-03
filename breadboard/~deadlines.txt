@@ -1,0 +1,6 @@
+1. flashing LED
+2. motors
+3. line detection
+4. LCD
+5. wall detection
+6. flame detection + flame ext.

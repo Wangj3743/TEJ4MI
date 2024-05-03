@@ -1,0 +1,34 @@
+#chip 16F18875
+
+#define LCD_LINES 2
+#define LCD_IO 4
+#define LCD_SPEED Slow
+
+#define LCD_V0 PORTD.3
+#define LCD_RW PORTD.1
+#define LCD_RS PORTD.0
+
+#define LCD_ENABLE PORTD.2
+
+#define LCD_D4 PORTD.4
+#define LCD_D5 PORTD.5
+#define LCD_D6 PORTD.6
+#define LCD_D7 PORTD.7
+
+Dir LCD_V0 out
+Dir LCD_RW out
+Dir LCD_RS out
+Dir LCD_ENABLE out
+Dir LCD_D4 out
+Dir LCD_D5 out
+Dir LCD_D6 out
+Dir LCD_D7 out
+
+Do Forever
+  CLS
+  Locate 0,0
+  Print "hello"
+  Locate 1,0
+  Print "sir"
+  wait 2000 ms
+Loop

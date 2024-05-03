@@ -1,0 +1,35 @@
+#chip 16F18875
+
+#define LCD_LINES 2
+#define LCD_IO 4
+#define LCD_SPEED Slow
+
+#define LCD_V0 PORTD.3
+
+#define LCD_RW PORTD.4
+#define LCD_RS PORTD.5
+
+#define LCD_ENABLE PORTD.6
+
+#define LCD_DB4 PORTB.4
+#define LCD_DB5 PORTB.5
+#define LCD_DB6 PORTB.6
+#define LCD_DB7 PORTB.7
+
+Dir LCD_DB7 out
+Dir LCD_DB6 out
+Dir LCD_DB5 out
+Dir LCD_DB4 out
+Dir LCD_RW out
+Dir LCD_RS out
+Dir LCD_V0 out
+Dir LCD_ENABLE out
+
+Do Forever
+  CLS
+  Locate 0,0
+  Print "We fried 3"
+  Locate 1,0
+  Print "chips doing this"
+  wait 1000 ms
+Loop

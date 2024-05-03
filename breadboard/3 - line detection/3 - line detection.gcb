@@ -1,0 +1,45 @@
+#CHIP 16F18875
+
+
+' line detection
+#define PHOTO PortA.0
+Dir PHOTO IN
+
+' motors
+#define LME PortC.0
+#define LMB PortC.1
+Dir LME OUT
+Dir LMB OUT
+
+#define RME PortC.2
+#define RMB PortC.3
+dir RME OUT
+Dir RMB OUT
+
+
+sub motors(direction)	' 1 = fwd, 0 = bwd
+	If direction = 1 then
+		set LME OFF
+		set LMB ON
+		set RME OFF
+		set RMB ON
+	Else
+		set LME ON
+		set LMB OFF
+		set RME ON
+		set RMB OFF
+	End If
+end sub
+
+
+start:
+	' line detection
+	If PHOTO ON then
+		motors(0)
+	Else
+		motors(1)
+	End If
+GOTO start
+end
+
+

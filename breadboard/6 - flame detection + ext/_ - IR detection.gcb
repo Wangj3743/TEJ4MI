@@ -1,0 +1,29 @@
+#CHIP 16F18875
+
+
+' IR SENSOR
+#define IRSENS PortA.1
+Dir IRSENS IN
+
+' fan motor
+#define FAN PortA.4
+Dir FAN OUT
+
+
+start:
+	' IR detection
+	If IRSENS ON then
+		fanmotor(0)
+	Else 
+		fanmotor(1)
+	End If
+GOTO start
+end
+
+sub fanmotor(direction)	' 1 = on, 0 = off
+	If direction = 1 then
+		set FAN ON
+	Else 
+		set FAN OFF
+	End If
+end sub

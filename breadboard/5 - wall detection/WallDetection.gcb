@@ -1,0 +1,51 @@
+#chip 16F18875
+
+#define LCD_LINES 2
+#define LCD_IO 4
+
+#define LCD_RW PORTD.1
+#define LCD_RS PORTD.0
+
+#define LCD_ENABLE PORTD.2
+
+#define LCD_DB4 PORTD.4
+#define LCD_DB5 PORTD.5
+#define LCD_DB6 PORTD.6
+#define LCD_DB7 PORTD.7
+
+#define WallLeft PORTA.3
+#define WallFront PORTA.2
+
+Dir LCD_DB7 out
+Dir LCD_DB6 out
+Dir LCD_DB5 out
+Dir LCD_DB4 out
+Dir LCD_RW out
+Dir LCD_RS out
+Dir LCD_ENABLE out
+
+Dir WallLeft in
+Dir WallFront in
+
+Dim WallFrontVoltage as Byte
+Dim WallLeftVoltage as Byte
+
+Dim DigitalWallFront as Byte
+Dim DigitalWallLeft as Byte
+
+Do Forever
+  CLS
+  WallFrontVoltage = READAD(AN1)
+  WallLeftVoltage = READAD(AN2)
+
+  DigitalWallFront = ((6787/(WallFrontVoltage-3))-4)/5
+  DigitalWallLeft = ((6787/(WallLeftVoltage-3))-4)/5
+
+  Locate 0,0
+  Print "LEFT: "
+  Print DigitalWallLeft
+  Locate 1,0
+  Print "FRONT: "
+  Print DigitalWallFront
+  wait 500 ms
+Loop
