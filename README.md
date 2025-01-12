@@ -1,4 +1,6 @@
 # TEJ4MI Programs and PCBs
+Firefighter bot code and designs. [Jim Wang](https://github.com/Wangj3743) & [Larry Shi](https://github.com/LarryBananaShi).
+
 ## about
 - these are the firefighter bot programs and PCBs that my teammate and I made in TEJ4MI
 - here, we are using the PIC16F18875 microcontroller chip
